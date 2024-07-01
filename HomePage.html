@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('C:/Users/Michael Baysic/Documents/UbasanGG Website/Purple_Leafy_BG.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            height: 120px;
+            background-color: #000000;
+            color: #000;
+            margin-top: 40px; /* Space before the header starts */
+            border-top: 2px solid #000; /* Border at the top of the header */
+            border-bottom: 2px solid #000; /* Border at the bottom of the header */
+            position: relative;
+        }
+        header a {
+            color: #FFF;
+            text-decoration: none;
+            bottom: 10px; /* Adjust vertical position from the bottom */
+            right: 20px; /* Adjust horizontal position from the right */
+        }
+        .company-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .company-logo img {
+            max-width: 90%; /* Adjust as necessary to fit your design */
+            max-height: 90%; /* Adjust as necessary to fit your design */
+        }
+        .company-name {
+            font-size: 20px;
+            color: #FFF;
+            text-decoration: none;
+            position: absolute;
+            bottom: 10px; /* Adjust vertical position from the bottom */
+            left: 510px; /* Adjust vertical position from the bottom */
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            height: 600px; /* Adjust height here */
+        }
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(180deg, #602f6b, rgba(165, 140, 217, 0));
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 95%; /* Ensures it takes full height of container */
+        }
+        .photo-title {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 300px; /* Optional: set a max-width to control the width */
+            /*margin-left: 50px;*/ /* Adjust this value to move horizontally */
+            font-size: 28px;
+            border: 2px solid #000; /* Border at the top of the container */
+	    border-left: 15px solid #000;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-left: 50px; /* Adjust this value to move horizontally */
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .visuals {
+            flex: 5;
+            background-color: #eee;
+            padding: 20px;
+            margin-left: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+        .visuals.fade-out {
+            opacity: 0;
+        }
+	.visuals.container {
+	    overflow: hidden;
+	}
+        .carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            padding-top: 20px;
+        }
+        .carousel div {
+            width: 60px;
+            height: 10px;
+            background-color: #C0C0C0; /* add border-radius: 50%; if oval */
+            margin: 0 5px;
+        }
+        .carousel .active {
+            width: 60px;
+            height: 15px;
+            background-color: #000;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4B006E;
+            color: #fff;
+            border-top: 2px solid #000; /* Border at the top of the footer */
+            border-bottom: 2px solid #000; /* Border at the bottom of the footer */
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons div {
+            width: 24px;
+            height: 24px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+	/* CSS for arrow */
+	.arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #fff;
+            margin-left: 5px;
+            display: inline-block;
+            vertical-align: middle;
+	}
+	/* Dropdown styling */
+	.dropdown {
+	    display: inline-block;
+            position: relative;
+	    margin-right: 20px; /* Adjust spacing between dropdowns */
+	}
+
+    	.dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #a58cd9;
+            width: 100%;
+            z-index: 99;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	    border-left: 10px solid #000;
+	}
+
+	.dropdown:hover .dropdown-content {
+            display: block;
+	}
+
+
+	/* Set dropdown content items to display block */
+	.dropdown-content a {
+	    display: block;
+	    text-decoration: none; /* Optional: Remove underline */
+	    font-size: 16px;
+	    color: black; /* Optional: Set text color */
+	    border-bottom: 1px solid #000; /* Add bottom border */
+	}
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+                width: 100%;
+                text-align: center;	
+            }
+            .company-logo {
+                margin-right: 0;
+            }
+            .company-name {
+                font-size: 36px;
+                position: static;
+                margin-top: 10px 0;
+            }
+            header a {
+                position: static;
+                margin-top: 10px;
+            }
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .visuals {
+                margin-left: 0;
+            }
+            .left-panel, .visuals {
+                width: 100%;
+            }
+            .photo-title {
+                margin-left: 0;
+                font-size: 20px;
+            }
+            .buttons {
+                margin-left: 0;
+            }
+            footer {
+                height: auto;
+                width: 100%;	
+            }
+        }
+        @media (max-width: 480px) {
+            .company-logo {
+                width: 120px;
+                height: 120px;
+            }
+            .company-name {
+                font-size: 24px;
+            }
+            .photo-title {
+                font-size: 14px;
+            }
+            .button {
+                padding: 5px 10px;
+            }
+            .carousel div {
+                width: 8px;
+                height: 8px;
+                margin: 0 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="company-logo">
+	    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\HomePage.html">
+                <img src="C:\Users\Michael Baysic\Documents\UbasanGG Website\Ubasan_Logo_Left_v2_Resized.png" alt="Company Logo">
+	    </a>
+        </div>
+        <div class="company-name">
+            <div class="dropdown" id="StreamingDropdown">
+                <span class="dropdown-toggle">Streaming<span class="arrow-down"></span></span>
+                <div class="dropdown-content">
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Youtube</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Facebook</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Twitch</a>
+                </div>
+            </div>
+            <div class="dropdown" id="GameDevelopmentDropdown">
+                <span class="dropdown-toggle">Game Development<span class="arrow-down"></span></span>
+                <div class="dropdown-content">
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Math Drills</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Untitled Game 1</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Untitled Game 2</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Untitled Game 3</a>
+                </div>
+            </div>
+            <div class="dropdown" id="AppDevelopmentDropdown">
+                <span class="dropdown-toggle">App Development<span class="arrow-down"></span></span>
+                <div class="dropdown-content">
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Untitled App 1</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Untitled App 2</a>
+                </div>
+            </div>
+            <div class="dropdown" id="AboutUsDropdown">
+                <span class="dropdown-toggle">About Us<span class="arrow-down"></span></span>
+                <div class="dropdown-content">
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\About_Us.html">About Ubasan GG</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">News</a>
+                    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Members</a>
+		    <a href="C:\Users\Michael Baysic\Documents\UbasanGG Website\Under_Construction.html">Merch</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left-panel">
+            <div class="photo-title" id="photo-title">Streaming</div>
+            <div class="carousel" onclick="resetCarouselTimer()" ontouchstart="handleTouchStart(event)">
+                <div onclick="selectSlide(0)" class="active"></div>
+                <div onclick="selectSlide(1)"></div>
+                <div onclick="selectSlide(2)"></div>
+            </div>
+        </div>
+        <div class="visuals" id="visuals">Streaming Photos</div>
+    </div>
+    <script>
+
+        const slides = [
+            {
+                title: "Streaming",
+                content: "Streaming Photos"
+            },
+            {
+                title: "Game Development",
+                content: "Game Titles Photos"
+            },
+            {
+                title: "App Development",
+                content: "Other Applications Photos"
+            }
+        ];
+
+        let currentSlide = 0;
+	let carouselTimer;
+
+        function selectSlide(index) {
+            const visuals = document.getElementById("visuals");
+            visuals.classList.add("fade-out");
+            setTimeout(() => {
+                document.getElementById("photo-title").textContent = slides[index].title;
+                visuals.textContent = slides[index].content;
+                document.querySelectorAll(".carousel div").forEach((dot, idx) => {
+                    if (idx === index) {
+                        dot.classList.add("active");
+                    } else {
+                        dot.classList.remove("active");
+                    }
+                });
+                visuals.classList.remove("fade-out");
+                currentSlide = index;
+            }, 500); // Wait for the fade-out transition to complete (500ms)
+        }
+
+        function autoCycle() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            selectSlide(currentSlide);
+        }
+    	
+	/*********************************************************************** PHONES ***********************************************************************/
+	
+	function handleTouchStart(event) {
+	    const touchStartX = event.touches[0].clientX;
+	    event.target.addEventListener('touchmove', handleTouchMove, { passive: true });
+	    event.target.addEventListener('touchend', handleTouchEnd);
+	}
+
+	function handleTouchMove(event) {
+	    event.preventDefault();
+	}
+
+	function handleTouchEnd(event) {
+	    const touchEndX = event.changedTouches[0].clientX;
+	    if (touchEndX < touchStartX) {
+	        // Swiped left
+	        nextSlide();
+	    } else if (touchEndX > touchStartX) {
+	        // Swiped right
+	        previousSlide();
+	    }
+	    event.target.removeEventListener('touchmove', handleTouchMove);
+	}
+	   
+	/*********************************************************************** PHONES ***********************************************************************/
+	
+	function startCarouselTimer() {
+            carouselTimer = setInterval(autoCycle, 10000); // Adjust the interval as needed
+	}
+
+	startCarouselTimer(); // Start the timer initially
+
+	function resetCarouselTimer() {
+	    clearInterval(carouselTimer); // Clear the existing timer
+	    startCarouselTimer(); // Start a new timer
+	}
+
+    </script>
+</body>
+</html>
