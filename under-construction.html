@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Name</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-image: url("./assets/images/bg-purple-leaf.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        height: 120px;
+        background-color: #000000;
+        color: #000;
+        margin-top: 40px; /* Space before the header starts */
+        border-top: 2px solid #000; /* Border at the top of the header */
+        border-bottom: 2px solid #000; /* Border at the bottom of the header */
+        position: relative;
+      }
+      header a {
+        color: #fff;
+        text-decoration: none;
+        bottom: 10px; /* Adjust vertical position from the bottom */
+        right: 20px; /* Adjust horizontal position from the right */
+      }
+      .company-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .company-logo img {
+        max-width: 90%; /* Adjust as necessary to fit your design */
+        max-height: 90%; /* Adjust as necessary to fit your design */
+      }
+      .company-name {
+        font-size: 20px;
+        color: #fff;
+        text-decoration: none;
+        position: absolute;
+        bottom: 10px; /* Adjust vertical position from the bottom */
+        left: 510px; /* Adjust vertical position from the bottom */
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px 0px;
+        height: 720px; /* Adjust height here */
+      }
+      .photo-title {
+        background: rgba(165, 140, 217, 0);
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        max-width: 300px; /* Optional: set a max-width to control the width */
+        /*margin-left: 50px;*/ /* Adjust this value to move horizontally */
+        font-size: 28px;
+        color: #fff;
+        border: 2px solid #000; /* Border at the top of the container */
+        border-left: 15px solid #000;
+      }
+      .visuals {
+        flex: 5;
+        background-color: rgba(165, 140, 217, 0);
+        padding: 20px;
+        font-size: 28px;
+        color: #fff;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        opacity: 1;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #4b006e;
+        color: #fff;
+        border-top: 2px solid #000; /* Border at the top of the footer */
+        border-bottom: 2px solid #000; /* Border at the bottom of the footer */
+      }
+      .social-icons {
+        display: flex;
+        gap: 10px;
+      }
+      .social-icons div {
+        width: 24px;
+        height: 24px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      /* CSS for arrow */
+      .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #fff;
+        margin-left: 5px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      /* Dropdown styling */
+      .dropdown {
+        display: inline-block;
+        position: relative;
+        margin-right: 20px; /* Adjust spacing between dropdowns */
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #a58cd9;
+        width: 100%;
+        z-index: 99;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border-left: 10px solid #000;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      /* Set dropdown content items to display block */
+      .dropdown-content a {
+        display: block;
+        text-decoration: none; /* Optional: Remove underline */
+        font-size: 16px;
+        color: black; /* Optional: Set text color */
+        border-bottom: 1px solid #000; /* Add bottom border */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      /* Media Queries for Responsive Design */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: center;
+          height: auto;
+          width: 100%;
+          text-align: center;
+        }
+        .company-logo {
+          margin-right: 0;
+        }
+        .company-name {
+          font-size: 36px;
+          position: static;
+          margin-top: 10px 0;
+        }
+        header a {
+          position: static;
+          margin-top: 10px;
+        }
+        .container {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .visuals {
+          margin-left: 0;
+        }
+        .visuals {
+          width: 100%;
+        }
+        .photo-title {
+          margin-left: 0;
+          font-size: 20px;
+        }
+        footer {
+          height: auto;
+          width: 100%;
+        }
+      }
+      @media (max-width: 480px) {
+        .company-logo {
+          width: 120px;
+          height: 120px;
+        }
+        .company-name {
+          font-size: 24px;
+        }
+        .photo-title {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="company-logo">
+        <a href="./index.html">
+          <img
+            src="./assets/images/logo-left-v2-resized.png"
+            alt="Company Logo"
+          />
+        </a>
+      </div>
+      <div class="company-name">
+        <div class="dropdown" id="StreamingDropdown">
+          <span class="dropdown-toggle"
+            >Streaming<span class="arrow-down"></span
+          ></span>
+          <div class="dropdown-content">
+            <a href="./under-construction.html">Youtube</a>
+            <a href="./under-construction.html">Facebook</a>
+            <a href="./under-construction.html">Twitch</a>
+          </div>
+        </div>
+        <div class="dropdown" id="GameDevelopmentDropdown">
+          <span class="dropdown-toggle"
+            >Game Development<span class="arrow-down"></span
+          ></span>
+          <div class="dropdown-content">
+            <a href="./under-construction.html">Math Drills</a>
+            <a href="./under-construction.html">Untitled Game 1</a>
+            <a href="./under-construction.html">Untitled Game 2</a>
+            <a href="./under-construction.html">Untitled Game 3</a>
+          </div>
+        </div>
+        <div class="dropdown" id="AppDevelopmentDropdown">
+          <span class="dropdown-toggle"
+            >App Development<span class="arrow-down"></span
+          ></span>
+          <div class="dropdown-content">
+            <a href="./under-construction.html">Untitled App 1</a>
+            <a href="./under-construction.html">Untitled App 2</a>
+          </div>
+        </div>
+        <div class="dropdown" id="AboutUsDropdown">
+          <span class="dropdown-toggle"
+            >About Us<span class="arrow-down"></span
+          ></span>
+          <div class="dropdown-content">
+            <a href="./about-us.html">About Ubasan GG</a>
+            <a href="./under-construction.html">News</a>
+            <a href="./under-construction.html">Members</a>
+            <a href="./under-construction.html">Merch</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="visuals" id="visuals">Page Under Construction</div>
+    </div>
+  </body>
+</html>
